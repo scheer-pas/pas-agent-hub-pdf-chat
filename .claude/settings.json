@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"MANDATORY: before editing/generating/reviewing any files, read .agents/AGENTS.md\""
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo \"MANDATORY: before editing/generating/reviewing any files, read .agents/AGENTS.md\""
+          }
+        ]
+      }
+    ]
+  }
+}

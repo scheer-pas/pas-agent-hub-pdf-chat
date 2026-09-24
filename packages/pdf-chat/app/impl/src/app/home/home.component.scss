@@ -1,0 +1,39 @@
+@use '../styles/shared' as shared;
+
+// ─── Page shell ─────────────────────────────────────────────────────────────
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #ffffff;
+  font-family: shared.$font-primary;
+  color: shared.$color-text-primary;
+  // Clip the hero rocket easter egg as it flies off the right edge so it does
+  // not introduce a horizontal scrollbar.
+  overflow-x: hidden;
+}
+
+// ─── Main content area ────────────────────────────────────────────────────────
+
+.main {
+  flex: 1;
+  padding: 48px 48px 64px;
+  display: flex;
+  flex-direction: column;
+}
+
+// ─── Two-column layout ──────────────────────────────────────────────────────
+
+.content {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  gap: 32px;
+}
+
+.cards-col {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 0;
+}

@@ -1,0 +1,5 @@
+{
+  "agents": ["claude-code", "junie", "universal"],
+  "sources": ["./node_modules/@pas/dev-guidelines", "./.pas/skills"],
+  "gitignore": false
+}

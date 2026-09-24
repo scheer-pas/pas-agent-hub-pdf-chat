@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 283 283">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #282828;
+      }
+
+      .cls-2 {
+        fill: none;
+        stroke: #282828;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 8px;
+      }
+    </style>
+  </defs>
+  <g id="Square_Black" data-name="Square Black">
+    <path class="cls-1" d="M212.31,8.69c34.19,0,62,27.81,62,62v141.62c0,34.19-27.81,62-62,62H70.69c-34.19,0-62-27.81-62-62V70.69c0-34.19,27.81-62,62-62h141.62M212.31.69H70.69C32.03.69.69,32.03.69,70.69v141.62c0,38.66,31.34,70,70,70h141.62c38.66,0,70-31.34,70-70V70.69C282.31,32.03,250.97.69,212.31.69h0Z"/>
+  </g>
+  <g id="Icons_Black" data-name="Icons Black">
+    <g>
+      <path class="cls-2" d="M163.69,213h-44.38l4.44-26.62h35.5l4.44,26.62Z"/>
+      <path class="cls-2" d="M106,213h71"/>
+      <path class="cls-2" d="M74.94,162.7h133.12"/>
+      <path class="cls-2" d="M92.69,79.87h97.62s17.75,0,17.75,17.75v71s0,17.75-17.75,17.75h-97.62s-17.75,0-17.75-17.75v-71s0-17.75,17.75-17.75"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+// Shared building blocks for the sidebar sections. Included by the section
+// subcomponents via `@use '../sidebar-shared' as sb;`.
+
+@use '../styles/shared' as shared;
+
+// A sidebar section: a heading stacked above its actions.
+@mixin section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@mixin heading {
+  font-family: shared.$font-primary;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 32px;
+  color: shared.$color-text-primary;
+  margin: 0 0 4px;
+  padding: 0;
+}

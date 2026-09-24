@@ -1,0 +1,80 @@
+@use '../../styles/shared' as shared;
+
+:host {
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+// ─── Default (pill) appearance ─────────────────────────────────────────────────
+
+:host(:not(.icon-appearance)) {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  color: shared.$color-text-primary;
+  text-align: center;
+  font-family: shared.$font-primary;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  letter-spacing: 0.1px;
+  height: 49px;
+  padding: 10px 16px 10px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  align-self: stretch;
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  border-radius: 6px;
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease;
+
+  &:hover {
+    border-color: #aaaaaa;
+    background: #f8f8f8;
+  }
+
+  &:active {
+    background: #eeeeee;
+  }
+
+  &:disabled {
+    color: #aaaaaa;
+    cursor: not-allowed;
+    background: #f0f0f0;
+  }
+
+  .icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// ─── Icon appearance ──────────────────────────────────────────────────────────
+
+:host(.icon-appearance) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.15s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  &:active {
+    opacity: 0.55;
+  }
+
+  .glyph {
+    width: 48px;
+    height: 48px;
+    display: block;
+    // Converts the SVG colour to the muted text grey (#6F6F6F).
+    filter: brightness(0) invert(1) brightness(0.435);
+    transition: filter 0.15s ease;
+  }
+}

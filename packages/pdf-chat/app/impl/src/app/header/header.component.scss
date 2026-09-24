@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  align-items: center;
+  padding: 18px 48px;
+  flex-shrink: 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .logo {
+    height: 24px;
+    width: auto;
+    display: block;
+  }
+
+  .text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #000000;
+    letter-spacing: 0.1px;
+  }
+}

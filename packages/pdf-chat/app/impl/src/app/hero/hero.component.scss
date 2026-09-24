@@ -1,0 +1,192 @@
+@use '../styles/shared' as shared;
+
+:host {
+  display: block;
+  margin-bottom: 40px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-family: shared.$font-primary;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 40px;
+  color: shared.$color-text-primary;
+  padding: 0;
+  margin: 0;
+
+  .accent {
+    color: shared.$color-brand-red;
+  }
+}
+
+// Fixed-size placeholder that reserves the rocket's space so the layout never
+// shifts, even after the rocket has flown off and been removed.
+.rocket-slot {
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  vertical-align: middle;
+}
+
+// Wrapper that carries the rocket and its afterburner so both fly together.
+.rocket-launcher {
+  position: relative;
+  display: inline-flex;
+  width: 60px;
+  height: 60px;
+  will-change: transform;
+
+  // Easter egg: wiggle, then turn the nose to point right and fly straight off
+  // the right edge at an even speed. The rocket art points up-right at rest, so
+  // rotate(45deg) makes the tip point exactly to the right.
+  &.launching {
+    animation: rocket-launch 5s linear forwards;
+
+    // Ignite the burner only once the flight starts (~26% of the 5s animation).
+    .afterburner {
+      animation: ab-ignite 5s linear forwards;
+    }
+  }
+
+  .rocket {
+    width: 60px;
+    height: 60px;
+    display: block;
+  }
+
+  // ─── Afterburner (small red squares trailing from the rocket's tail) ─────────
+  .afterburner {
+    position: absolute;
+    left: 14px;
+    top: 42px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    .square {
+      position: absolute;
+      background: shared.$color-brand-red;
+      border-radius: 1px;
+      animation: ab-flicker 0.3s ease-in-out infinite;
+
+      // Trail down-left along the exhaust axis, shrinking away from the tail.
+      &:nth-child(1) {
+        left: -2px;
+        top: 2px;
+        width: 9px;
+        height: 9px;
+        animation-delay: 0s;
+      }
+
+      &:nth-child(2) {
+        left: -9px;
+        top: 8px;
+        width: 7px;
+        height: 7px;
+        animation-delay: 0.06s;
+      }
+
+      &:nth-child(3) {
+        left: -16px;
+        top: 14px;
+        width: 5px;
+        height: 5px;
+        animation-delay: 0.12s;
+      }
+
+      &:nth-child(4) {
+        left: -23px;
+        top: 20px;
+        width: 4px;
+        height: 4px;
+        animation-delay: 0.18s;
+      }
+    }
+  }
+}
+
+@keyframes ab-ignite {
+  0%,
+  24% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 1;
+  }
+
+  92% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes ab-flicker {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+
+  50% {
+    transform: scale(0.55);
+    opacity: 0.45;
+  }
+}
+
+@keyframes rocket-launch {
+  // ─ Wiggle in place ─
+  0% {
+    transform: translate(0, 0) rotate(0) scale(1);
+  }
+
+  4% {
+    transform: translate(-2px, 1px) rotate(-8deg) scale(1);
+  }
+
+  8% {
+    transform: translate(2px, -1px) rotate(8deg) scale(1);
+  }
+
+  12% {
+    transform: translate(-2px, 1px) rotate(-8deg) scale(1);
+  }
+
+  16% {
+    transform: translate(2px, -1px) rotate(8deg) scale(1);
+  }
+
+  20% {
+    transform: translate(-1px, 1px) rotate(-4deg) scale(1);
+  }
+
+  // Crouch back while turning the nose to point right.
+  // ease-in on this keyframe makes the flight start slow and then speed up.
+  26% {
+    transform: translate(-6px, 0) rotate(45deg) scale(1.05);
+    animation-timing-function: ease-in;
+  }
+
+  // ─ Accelerating flight straight to the right ─
+  100% {
+    transform: translate(140vw, 0) rotate(45deg) scale(0.5);
+  }
+}
+
+.subtitle {
+  font-family: shared.$font-primary;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: 0.5px;
+  color: shared.$color-text-muted;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,8 @@
+@if (appearance() === 'icon') {
+  <img class="glyph" [src]="icon()" alt="" />
+} @else {
+  <ng-content />
+  @if (icon(); as iconSrc) {
+    <img class="icon" [src]="iconSrc" alt="" />
+  }
+}

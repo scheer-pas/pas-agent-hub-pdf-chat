@@ -1,0 +1,9 @@
+@use '../sidebar-shared' as sb;
+
+:host {
+  @include sb.section;
+
+  .heading {
+    @include sb.heading;
+  }
+}

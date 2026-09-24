@@ -1,0 +1,5 @@
+{
+  "$schema": "../../../../node_modules/@pas/nx-plugin/schemas/component.schema.json",
+  "$version": "26.0",
+  "features": []
+}

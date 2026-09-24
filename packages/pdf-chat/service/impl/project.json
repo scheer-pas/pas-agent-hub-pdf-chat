@@ -1,0 +1,90 @@
+{
+  "name": "pdf-chat-service",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/pdf-chat/service/impl/src",
+  "projectType": "application",
+  "tags": ["pas-service"],
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/packages/pdf-chat/service/impl",
+        "main": "packages/pdf-chat/service/impl/src/main.ts",
+        "tsConfig": "packages/pdf-chat/service/impl/tsconfig.app.json",
+        "assets": [
+          "packages/pdf-chat/service/impl/src/assets",
+          "packages/pdf-chat/service/impl/src/config"
+        ],
+        "webpackConfig": "packages/pdf-chat/service/impl/webpack.config.js",
+        "generatePackageJson": true,
+        "runtimeDependencies": ["@langchain/openai"]
+      },
+      "configurations": {
+        "development": {
+          "outputHashing": "none"
+        },
+        "production": {}
+      }
+    },
+    "prune-lockfile": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "executor": "@nx/js:prune-lockfile",
+      "outputs": [
+        "{workspaceRoot}/dist/packages/pdf-chat/service/impl/package.json",
+        "{workspaceRoot}/dist/packages/pdf-chat/service/impl/package-lock.json"
+      ],
+      "options": {
+        "buildTarget": "build"
+      }
+    },
+    "copy-workspace-modules": {
+      "dependsOn": ["build"],
+      "cache": true,
+      "outputs": [
+        "{workspaceRoot}/dist/packages/pdf-chat/service/impl/workspace_modules"
+      ],
+      "executor": "@nx/js:copy-workspace-modules",
+      "options": {
+        "buildTarget": "build"
+      }
+    },
+    "prune": {
+      "dependsOn": ["prune-lockfile", "copy-workspace-modules"],
+      "executor": "nx:noop"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "pdf-chat-service:build",
+        "runBuildTargetDependencies": false
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "pdf-chat-service:build:development"
+        },
+        "production": {
+          "buildTarget": "pdf-chat-service:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/pdf-chat/service/impl/jest.config.cts",
+        "passWithNoTests": true
+      }
+    }
+  }
+}

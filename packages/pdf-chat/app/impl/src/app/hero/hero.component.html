@@ -1,0 +1,27 @@
+<h1 class="title">
+  <span class="accent">PAS Agent Hub App</span><span>&nbsp;</span
+  ><span>is ready now</span
+  ><span class="rocket-slot">
+    @if (!isGone()) {
+      <span class="rocket-launcher" [class.launching]="isLaunching()">
+        <span class="afterburner" aria-hidden="true">
+          <span class="square"></span>
+          <span class="square"></span>
+          <span class="square"></span>
+          <span class="square"></span>
+        </span>
+        <img
+          class="rocket"
+          src="icons/rocket.svg"
+          alt=""
+          role="button"
+          aria-label="rocket"
+          tabindex="0"
+          (click)="onRocketClick()"
+          (keydown.enter)="onRocketClick()"
+        />
+      </span>
+    }
+  </span>
+</h1>
+<p class="subtitle">Try the examples below.</p>

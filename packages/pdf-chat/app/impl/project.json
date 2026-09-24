@@ -1,0 +1,89 @@
+{
+  "name": "pdf-chat-app",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "app",
+  "sourceRoot": "packages/pdf-chat/app/impl/src",
+  "tags": ["pas-app"],
+  "targets": {
+    "build": {
+      "executor": "@angular/build:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/pdf-chat/app/impl",
+        "browser": "packages/pdf-chat/app/impl/src/main.ts",
+        "tsConfig": "packages/pdf-chat/app/impl/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          {
+            "glob": "**/*",
+            "input": "packages/pdf-chat/app/impl/public"
+          }
+        ],
+        "styles": ["packages/pdf-chat/app/impl/src/styles.scss"]
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "2mb",
+              "maximumError": "3mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "8kb",
+              "maximumError": "16kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "fileReplacements": [
+            {
+              "replace": "{projectRoot}/src/environments/environment.ts",
+              "with": "{projectRoot}/src/environments/environment.dev.ts"
+            }
+          ]
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@angular/build:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "pdf-chat-app:build:production"
+        },
+        "development": {
+          "buildTarget": "pdf-chat-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/pdf-chat/app/impl/jest.config.cts",
+        "tsConfig": "packages/pdf-chat/app/impl/tsconfig.spec.json"
+      }
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "pdf-chat-app:build",
+        "staticFilePath": "dist/packages/pdf-chat/app/impl/browser",
+        "spa": true
+      }
+    }
+  }
+}

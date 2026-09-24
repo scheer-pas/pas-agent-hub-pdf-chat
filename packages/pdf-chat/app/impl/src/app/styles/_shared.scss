@@ -1,0 +1,25 @@
+// Shared design tokens for the app. Included by the domain components via
+// `@use '../styles/shared' as shared;` so the fonts and brand colours stay
+// defined once.
+
+// ─── Typography ───────────────────────────────────────────────────────────────
+
+$font-primary: 'Roboto', Arial, sans-serif;
+$font-mono: 'Roboto Mono', monospace;
+
+// ─── Colours ──────────────────────────────────────────────────────────────────
+
+$color-text-primary: #282828;
+$color-text-muted: #6f6f6f;
+$color-brand-red: #ff4637;
+$color-brand-red-hover: #e03020;
+$color-brand-red-active: #c02010;
+
+// ─── SVG recolouring ──────────────────────────────────────────────────────────
+
+// Tone a monochrome SVG to the neutral grey used for a workflow icon at rest.
+$icon-neutral-filter: brightness(0) invert(1) brightness(0.65);
+
+// Recolour a monochrome SVG to the brand accent (red).
+$icon-accent-filter: brightness(0) saturate(100%) invert(38%) sepia(93%)
+  saturate(1418%) hue-rotate(336deg) brightness(103%) contrast(105%);

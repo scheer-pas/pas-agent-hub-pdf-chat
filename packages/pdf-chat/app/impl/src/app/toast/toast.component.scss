@@ -1,0 +1,36 @@
+@use '../styles/shared' as shared;
+
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  max-width: 460px;
+  padding: 16px 24px;
+  background: shared.$color-brand-red;
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  color: #ffffff;
+  animation: toast-in 0.2s ease;
+
+  .text {
+    font-family: shared.$font-primary;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 22px;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}

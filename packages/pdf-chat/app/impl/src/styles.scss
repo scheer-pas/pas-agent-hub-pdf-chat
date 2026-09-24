@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Reset the default user-agent body margin so the full-height page layout
+   (min-height: 100vh) does not overflow and add an unnecessary scrollbar.
+   overflow-x is clipped so the hero rocket easter egg can fly off the right
+   edge without introducing a horizontal scrollbar. */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}

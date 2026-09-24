@@ -1,0 +1,19 @@
+{
+  "name": "pdf-chat-service-client",
+  "$schema": "../../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/pdf-chat/service/client/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "packages/pdf-chat/service/client/jest.config.cts"
+      }
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug PAS service",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "serve", "${input:serviceName}"],
+      "console": "integratedTerminal",
+      "autoAttachChildProcesses": true,
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.(m|c|)js",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to running PAS service",
+      "port": 9229,
+      "restart": true,
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": [
+        "${workspaceFolder}/dist/**/*.(m|c|)js",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug pdf-chat-service with Nx",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["nx", "serve", "pdf-chat-service"],
+      "env": {
+        "NODE_OPTIONS": "--inspect=9229"
+      },
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen",
+      "skipFiles": ["<node_internals>/**"],
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/packages/pdf-chat/service/impl/dist/**/*.(m|c|)js",
+        "!**/node_modules/**"
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "id": "serviceName",
+      "type": "promptString",
+      "description": "Nx project name of the service to debug (e.g. pdf-chat)"
+    }
+  ]
+}
