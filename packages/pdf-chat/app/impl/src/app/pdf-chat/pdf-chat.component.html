@@ -1,0 +1,31 @@
+<div class="heading">
+  <div>
+    <h2 class="title">Chat with your PDFs</h2>
+    <p class="description">
+      Upload up to five PDFs and ask questions about them. The agent answers
+      from the documents, and each source opens the PDF at the page it used.
+    </p>
+  </div>
+  @if (session.entries().length > 0) {
+    <button
+      type="button"
+      class="clear"
+      [disabled]="session.isAnswering()"
+      (click)="session.clearConversation()"
+    >
+      Clear chat
+    </button>
+  }
+</div>
+
+<app-pdf-upload />
+
+@if (session.documents().length > 0) {
+  @if (session.entries().length === 0) {
+    <app-suggested-questions />
+  } @else {
+    <app-chat-conversation />
+  }
+}
+
+<app-question-input />

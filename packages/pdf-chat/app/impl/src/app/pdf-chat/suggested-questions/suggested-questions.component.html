@@ -1,0 +1,11 @@
+<span class="label">Try asking:</span>
+@for (question of questions; track question) {
+  <button
+    type="button"
+    class="question"
+    [disabled]="!session.canAsk()"
+    (click)="session.ask(question)"
+  >
+    {{ question }}
+  </button>
+}

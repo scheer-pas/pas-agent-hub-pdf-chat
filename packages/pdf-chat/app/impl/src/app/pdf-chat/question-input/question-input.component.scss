@@ -1,0 +1,62 @@
+@use '../../styles/shared' as shared;
+
+:host {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  .input {
+    flex: 1;
+    min-width: 0;
+    padding: 10px 12px;
+    background: #f5f5f5;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-family: shared.$font-primary;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+    resize: vertical;
+    outline: none;
+
+    &::placeholder {
+      color: #aaaaaa;
+    }
+
+    &:focus {
+      border-color: #cccccc;
+      background: #eeeeee;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  .send {
+    height: 44px;
+    padding: 12px 24px;
+    background: shared.$color-brand-red;
+    border: none;
+    border-radius: 6px;
+    font-family: shared.$font-primary;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    flex-shrink: 0;
+
+    &:hover {
+      background: shared.$color-brand-red-hover;
+    }
+
+    &:active {
+      background: shared.$color-brand-red-active;
+    }
+
+    &:disabled {
+      background: #cccccc;
+      cursor: not-allowed;
+    }
+  }
+}

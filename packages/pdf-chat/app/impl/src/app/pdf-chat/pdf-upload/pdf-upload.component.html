@@ -1,0 +1,67 @@
+@if (session.documents().length > 0) {
+  <ul class="documents">
+    @for (document of session.documents(); track document.name) {
+      <li class="document">
+        <img class="icon" src="icons/content_easy_creation.svg" alt="" />
+        <div class="details">
+          <span class="name">{{ document.name }}</span>
+          <span class="size"
+            >{{ document.size / bytesPerMb | number: '1.1-1' }} MB</span
+          >
+        </div>
+        <button
+          type="button"
+          class="remove"
+          [disabled]="session.isBusy()"
+          [attr.aria-label]="'Remove ' + document.name"
+          (click)="session.removeDocument(document.name)"
+        >
+          Remove
+        </button>
+      </li>
+    }
+  </ul>
+  <p class="summary">
+    {{ session.documents().length }} of {{ maxDocuments }} documents ·
+    {{ session.totalSize() / bytesPerMb | number: '1.1-1' }} of 10 MB
+  </p>
+}
+
+@if (session.canAddDocuments()) {
+  <label
+    class="drop-area"
+    [class.compact]="session.documents().length > 0"
+    [class.drag-over]="isDragOver()"
+    (dragover)="onDragOver($event)"
+    (dragleave)="onDragLeave()"
+    (drop)="onDrop($event)"
+  >
+    <img class="icon" src="icons/content_easy_creation.svg" alt="" />
+    <span class="hint">
+      @if (session.documents().length > 0) {
+        <strong>Add more PDFs</strong> or drag them here
+      } @else {
+        <strong>Choose PDFs</strong> or drag them here (up to
+        {{ maxDocuments }} files, 10 MB together)
+      }
+    </span>
+    <input
+      type="file"
+      accept="application/pdf,.pdf"
+      multiple
+      class="picker"
+      (change)="onFilesSelected($event)"
+    />
+  </label>
+}
+
+@if (session.rejectedFiles().length > 0) {
+  <ul class="rejected" role="alert">
+    @for (file of session.rejectedFiles(); track $index) {
+      <li>
+        <strong>{{ file.fileName }}</strong
+        >: {{ file.reason }}
+      </li>
+    }
+  </ul>
+}

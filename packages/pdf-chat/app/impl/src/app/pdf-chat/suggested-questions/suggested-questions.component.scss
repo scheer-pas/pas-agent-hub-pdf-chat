@@ -1,0 +1,36 @@
+@use '../../styles/shared' as shared;
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+
+  .label {
+    font-size: 14px;
+    color: shared.$color-text-muted;
+  }
+
+  .question {
+    height: 36px;
+    padding: 0 14px;
+    background: #fff5f4;
+    border: 1px solid #ffd2ce;
+    border-radius: 18px;
+    font-family: shared.$font-primary;
+    font-size: 14px;
+    color: shared.$color-brand-red;
+    cursor: pointer;
+
+    &:hover {
+      border-color: shared.$color-brand-red;
+    }
+
+    &:disabled {
+      color: #aaaaaa;
+      background: #f5f5f5;
+      border-color: #e0e0e0;
+      cursor: not-allowed;
+    }
+  }
+}

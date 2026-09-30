@@ -12,22 +12,22 @@ describe('ToastService', () => {
     jest.useRealTimers();
   });
 
-  it('shows an error message and hides it after the timeout', () => {
-    service.showError();
-    expect(service.message()).not.toBeNull();
+  it('shows the given message and hides it after the timeout', () => {
+    service.show('Something went wrong.');
+    expect(service.message()).toBe('Something went wrong.');
 
     jest.advanceTimersByTime(6500);
     expect(service.message()).toBeNull();
   });
 
   it('keeps only the newest message visible when shown repeatedly', () => {
-    service.showError();
+    service.show('First problem.');
     jest.advanceTimersByTime(3000);
-    service.showError();
+    service.show('Second problem.');
 
     // The first auto-hide must not clear the second message early.
     jest.advanceTimersByTime(3500);
-    expect(service.message()).not.toBeNull();
+    expect(service.message()).toBe('Second problem.');
 
     jest.advanceTimersByTime(3000);
     expect(service.message()).toBeNull();

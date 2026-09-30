@@ -1,0 +1,59 @@
+@use '../styles/shared' as shared;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+
+  .title {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    color: shared.$color-text-primary;
+    margin: 0;
+  }
+
+  .description {
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.25px;
+    color: shared.$color-text-muted;
+    margin: 0;
+  }
+
+  .clear {
+    flex-shrink: 0;
+    height: 36px;
+    padding: 0 16px;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    font-family: shared.$font-primary;
+    font-size: 14px;
+    font-weight: 500;
+    color: shared.$color-text-primary;
+    cursor: pointer;
+
+    &:hover {
+      border-color: shared.$color-brand-red;
+      color: shared.$color-brand-red;
+    }
+
+    &:disabled {
+      color: #aaaaaa;
+      border-color: #e0e0e0;
+      cursor: not-allowed;
+    }
+  }
+}

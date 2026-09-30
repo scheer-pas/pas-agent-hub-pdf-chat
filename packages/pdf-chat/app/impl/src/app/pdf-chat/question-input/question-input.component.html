@@ -1,0 +1,12 @@
+<textarea
+  class="input"
+  rows="2"
+  [ngModel]="question()"
+  (ngModelChange)="question.set($event)"
+  [placeholder]="placeholder()"
+  [disabled]="session.documents().length === 0"
+  (keydown)="onKeydown($event)"
+></textarea>
+<button type="button" class="send" [disabled]="!canSend()" (click)="send()">
+  Send
+</button>

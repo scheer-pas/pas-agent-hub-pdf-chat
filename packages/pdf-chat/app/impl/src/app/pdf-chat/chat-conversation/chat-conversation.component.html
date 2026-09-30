@@ -1,0 +1,42 @@
+<ol class="entries">
+  @for (entry of session.entries(); track entry.id) {
+    <li
+      class="entry"
+      [class.question]="entry.role === userRole"
+      [class.answer]="entry.role !== userRole"
+      [class.failed]="entry.status === status.Failed"
+    >
+      <span
+        class="bubble"
+        [class.answering]="entry.status === status.Answering"
+      >
+        @if (entry.status === status.Answering && !entry.body) {
+          <span class="thinking">Reading the documents…</span>
+        } @else {
+          {{ entry.body }}
+        }
+      </span>
+      @if (entry.sources.length > 0) {
+        <div class="sources">
+          <span class="label">Sources:</span>
+          @for (source of entry.sources; track $index) {
+            @if (session.sourceUrl(source); as url) {
+              <a
+                class="source"
+                [href]="url"
+                target="_blank"
+                rel="noopener noreferrer"
+                >{{ source.label }}</a
+              >
+            } @else {
+              <span class="source unlinked">{{ source.label }}</span>
+            }
+          }
+        </div>
+      }
+      @if (entry.status === status.Failed) {
+        <span class="failed-note">Not answered</span>
+      }
+    </li>
+  }
+</ol>
