@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="60" viewBox="0 0 360 60" role="img" aria-labelledby="title">
+  <title id="title">Book a meeting with the Scheer PAS team</title>
+  <rect x="0.5" y="0.5" width="359" height="59" rx="30" fill="#000000" stroke="#FF4637" stroke-width="1"/>
+  <circle cx="330" cy="30" r="20" fill="#FF4637"/>
+  <path d="M321 30h16m-6-6 6 6-6 6" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="30" y="36" fill="#FFFFFF" font-family="Roboto, 'Helvetica Neue', Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="0.3">Book a meeting with our team</text>
+</svg>
