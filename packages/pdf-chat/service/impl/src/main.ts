@@ -1,6 +1,7 @@
 import { AgentModule } from '@pas/agent-module';
 import { createPasModule } from '@pas/module';
 import { PasServiceNestjsExpressModule } from '@pas/service-nestjs-express-module';
+import { PdfChatModule } from './pdf-chat';
 import defaultConfig from './config/default/config.json';
 
 /**
@@ -24,7 +25,7 @@ import defaultConfig from './config/default/config.json';
  *   cors: false                    — disable CORS (enabled here for local dev)
  *   compression: true              — enable response compression
  *
- * Add your own feature modules to the array.
+ * Add your own feature modules to the array alongside PdfChatModule.
  */
 (async function () {
   try {
@@ -34,6 +35,7 @@ import defaultConfig from './config/default/config.json';
         config: { defaultConfig },
       }),
       AgentModule,
+      PdfChatModule,
     ]);
   } catch (err) {
     console.error(err);

@@ -1,1 +1,12 @@
-{}
+{
+  "agents": {
+    "pdfChat": {
+      "version": "26",
+      "model": {
+        "provider": "universal",
+        "model": "openai:gpt-4o-mini"
+      },
+      "mcpServers": {}
+    }
+  }
+}

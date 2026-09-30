@@ -1,5 +1,12 @@
 {
   "$schema": "../../../../node_modules/@pas/nx-plugin/schemas/component.schema.json",
   "$version": "26.0",
-  "features": []
+  "features": [
+    {
+      "type": "agent",
+      "name": "pdf-chat",
+      "description": "Answers questions about uploaded PDF documents and names the page of each source.",
+      "configKey": "agents.pdfChat"
+    }
+  ]
 }
